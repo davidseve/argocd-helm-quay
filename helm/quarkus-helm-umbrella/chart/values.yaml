@@ -5,6 +5,7 @@ discounts:
   version: v1.0.1
   image:
     tag: v1.0.1
+    repository: quay.io/dseveria/discounts
   podAnnotations:
     prometheus.io/scrape: "true"
     prometheus.io/port: "8080"
@@ -19,7 +20,7 @@ global:
   prometheusAddress: https://prometheus-k8s.openshift-monitoring.svc.cluster.local
   istio:
     enabled: false
-    
+
 nameOverride: "shop-umbrella" 
 
 fullnameOverride: ""
