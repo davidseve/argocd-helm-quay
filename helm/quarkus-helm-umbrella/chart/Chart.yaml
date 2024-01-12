@@ -7,7 +7,7 @@ appVersion: "1.16.0"
 
 dependencies:
   - name: quarkus-base
-    version: 0.1.0
+    version: 0.1.1
     repository: oci://example-registry-quay-quay-enterprise.apps.cluster-zv2sq.zv2sq.sandbox1370.opentlc.com/shop
     alias: discounts
     tags:
