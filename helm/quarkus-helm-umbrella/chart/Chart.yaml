@@ -6,13 +6,15 @@ version: 0.1.0
 appVersion: "1.16.0"
 
 dependencies:
-  - name: oci://example-registry-quay-quay-enterprise.apps.cluster-zv2sq.zv2sq.sandbox1370.opentlc.com/shop/quarkus-base
+  - name: quarkus-base
     version: 0.1.0
+    repository: oci://example-registry-quay-quay-enterprise.apps.cluster-zv2sq.zv2sq.sandbox1370.opentlc.com/shop
     alias: discounts
     tags:
       - discounts
-  - name: oci://example-registry-quay-quay-enterprise.apps.cluster-zv2sq.zv2sq.sandbox1370.opentlc.com/shop/quarkus-base-networking
+  - name: quarkus-base-networking
     version: 0.1.0
+    repository: oci://example-registry-quay-quay-enterprise.apps.cluster-zv2sq.zv2sq.sandbox1370.opentlc.com/shop
     alias: discountsNetworking 
     tags:
       - discountsNetworking
