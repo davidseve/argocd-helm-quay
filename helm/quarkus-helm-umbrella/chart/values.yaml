@@ -17,7 +17,9 @@ discountsNetworking:
 
 global:
   prometheusAddress: https://prometheus-k8s.openshift-monitoring.svc.cluster.local
-
+  istio:
+    enabled: false
+    
 nameOverride: "shop-umbrella" 
 
 fullnameOverride: ""
