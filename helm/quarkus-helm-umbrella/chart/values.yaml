@@ -1,0 +1,25 @@
+discounts:
+  nameOverride: discounts-umbrella
+  fullnameOverride: "discounts"
+  mode: mode
+  version: v1.0.1
+  image:
+    tag: v1.0.1
+  podAnnotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "8080"
+    prometheus.io/path: "/q/metrics"
+discountsNetworking:
+  nameOverride: discounts-umbrella
+  fullnameOverride: "discounts-umbrella-online"
+  router:
+    enabled: false
+
+global:
+  prometheusAddress: https://prometheus-k8s.openshift-monitoring.svc.cluster.local
+
+nameOverride: "shop-umbrella" 
+
+fullnameOverride: ""
+
+

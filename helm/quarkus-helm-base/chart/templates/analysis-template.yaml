@@ -1,0 +1,30 @@
+{{- if .Values.rollouts.enabled }}
+
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: {{ include "quarkus.fullname" . }}-analysis-template
+  labels:
+    {{- include "quarkus.labels" . | nindent 4 }}
+spec:
+  metrics:
+{{- if .Values.rollouts.analysis.web }}
+  - name: {{ include "quarkus.fullname" . }}-webmetric
+    successCondition: result == 'UP'
+    provider:
+      web:
+        url: "http://{{ .Values.rollouts.analysis.service }}.{{ .Values.global.namespace }}.svc.cluster.local:8080/q/health/ready"
+        jsonPath: "{$.status}"
+{{- else if .Values.rollouts.analysis.prometheus }}
+#this have to be tested
+  - name: {{ include "quarkus.fullname" . }}-prometheus-metric
+    interval: 10s
+    successCondition: len(result) > 0 && (isNaN(result[0]) || result[0] >= 0.95)
+    failureLimit: 2
+    provider:
+      prometheus:
+        address: {{ .Values.global.prometheusAddress }}
+        query: |
+          {{ .Values.rollouts.analysis.query | indent 10 }}
+{{- end }}
+{{- end }}
